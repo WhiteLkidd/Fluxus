@@ -26,3 +26,7 @@ Everything works out-of-the-box, no extra installs required.
 ## ✨ Note
 Created by a **12-year-old kid**, but works like a professional text editor 😎  
 Perfect for quick coding, learning, or just showing off your ultra-cool Python GUI!
+
+
+
+install exe on google drive: https://drive.google.com/file/d/1lSzG4bV19vSgU9AcKf9-kioAGEAgdG9D/view?usp=drive_link
