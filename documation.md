@@ -42,7 +42,7 @@ Fluxus programs are stored in `.flx` files.
 To run a program:
 
 ```
-fluxus program.flx
+./fluxus program.flx
 ```
 
 Programs are executed from top to bottom.
