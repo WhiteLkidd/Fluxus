@@ -1,10 +1,10 @@
 # Fluxus Programming Language
-## Complete Documentation – Version 2
+## Complete Documentation – Version 2.2
 
-Fluxus is a lightweight interpreted programming language designed to be simple, readable, and powerful enough for console applications.
+Fluxus is a lightweight interpreted programming language designed to be simple, readable, and powerful enough for console applications.  
 It combines ideas from C, C++, Java, Python and Lua, while maintaining its own unique syntax (such as `<-` assignment).
 
-Use simonpad to code comfortably like in for example VS code or another editors
+Use SimonPad to code comfortably like in VS Code or other editors.
 
 This document explains everything available in Fluxus v2 in a clear and beginner-friendly way.
 
@@ -22,16 +22,17 @@ This document explains everything available in Fluxus v2 in a clear and beginner
 8. Conditions (if / else)
 9. Loops (while)
 10. Functions
-11. Arrays
-12. Pointers
-13. Structs
-14. Built-in Functions
-15. Modules
-16. Type Conversion Rules
-17. Truth Rules
-18. Execution Model
-19. Complete Example
-20. Feature Summary
+11. Using More Files (Use file.flx;)
+12. Arrays
+13. Pointers
+14. Structs
+15. Built-in Functions
+16. Modules
+17. Type Conversion Rules
+18. Truth Rules
+19. Execution Model
+20. Complete Example
+21. Feature Summary
 
 ---
 
@@ -88,11 +89,7 @@ println(x);
 
 # 4. Data Types
 
-Fluxus supports the following primitive types:
-
 ## 4.1 int
-
-Whole numbers.
 
 ```fluxus
 int x <- 5;
@@ -100,21 +97,17 @@ int x <- 5;
 
 ## 4.2 double
 
-Decimal numbers.
-
 ```fluxus
 double pi <- 3.14;
 ```
 
 ## 4.3 String
 
-Text values inside double quotes.
-
 ```fluxus
 String name <- "Fluxus";
 ```
 
-Escape sequences supported:
+Escape sequences:
 
 ```
 \n   newline
@@ -123,8 +116,6 @@ Escape sequences supported:
 ```
 
 ## 4.4 bool
-
-Boolean values.
 
 ```fluxus
 bool active <- true;
@@ -139,7 +130,7 @@ false
 
 ## 4.5 null
 
-Represents "no value".
+Represents no value.
 
 ```
 null
@@ -149,7 +140,7 @@ null
 
 # 5. Variables
 
-Declaration syntax:
+Declaration:
 
 ```
 type name <- expression;
@@ -172,13 +163,7 @@ age <- 13;
 
 # 6. Assignment
 
-Fluxus uses:
-
-```
-<-
-```
-
-Example:
+Fluxus uses `<-`.
 
 ```fluxus
 int x <- 10;
@@ -189,43 +174,19 @@ x <- 20;
 
 # 7. Operators
 
-## 7.1 Arithmetic
+## Arithmetic
 
 ```
-+   addition
--   subtraction
-*   multiplication
-/   division
++  -  *  /
 ```
 
-Example:
-
-```fluxus
-int result <- 5 + 3;
-```
-
----
-
-## 7.2 Comparison
+## Comparison
 
 ```
-==   equal
-!=   not equal
-<    less than
->    greater than
+==  !=  <  >
 ```
 
-Example:
-
-```fluxus
-if (x == 10) {
-    println("Ten");
-}
-```
-
----
-
-## 7.3 Logical
+## Logical
 
 ```
 and
@@ -233,37 +194,9 @@ or
 not
 ```
 
-Example:
-
-```fluxus
-if (x > 0 and x < 100) {
-    println("In range");
-}
-```
-
 ---
 
 # 8. Conditions
-
-## 8.1 if
-
-```fluxus
-if (condition) {
-    statements
-}
-```
-
-## 8.2 if / else
-
-```fluxus
-if (x > 10) {
-    println("Big");
-} else {
-    println("Small");
-}
-```
-
-## 8.3 else if
 
 ```fluxus
 if (x > 10) {
@@ -279,9 +212,7 @@ if (x > 10) {
 
 # 9. Loops
 
-## 9.1 while
-
-Repeats while condition is true.
+## while
 
 ```fluxus
 int i <- 0;
@@ -292,21 +223,14 @@ while (i < 5) {
 }
 ```
 
-## 9.2 break
-
-Stops loop immediately.
-
-## 9.3 continue
-
-Skips current iteration.
+`break` stops the loop.  
+`continue` skips current iteration.
 
 ---
 
 # 10. Functions
 
-Functions allow reusable blocks of code.
-
-## 10.1 Declaration
+Declaration:
 
 ```fluxus
 fun add(int a, int b) {
@@ -314,62 +238,94 @@ fun add(int a, int b) {
 }
 ```
 
-## 10.2 Calling
+Calling:
 
 ```fluxus
 int result <- add(5, 3);
-```
-
-## 10.3 Return
-
-```fluxus
-return value;
 ```
 
 If no return is provided, function returns `null`.
 
 ---
 
-# 11. Arrays
+# 11. Using More Files
 
-Arrays store multiple values.
+Fluxus supports splitting programs into multiple `.flx` files.
 
-## 11.1 Creating
-
-```fluxus
-int numbers <- [1, 2, 3];
-```
-
-## 11.2 Access
+## Basic Usage
 
 ```fluxus
-println(numbers[0]);
+Use utils.flx;
 ```
 
-## 11.3 Modify
+When encountered:
+
+```
+Use file.flx;
+```
+
+Fluxus:
+
+1. Loads the file  
+2. Parses it  
+3. Executes top-level code  
+4. Makes its functions and variables available  
+
+## Example
+
+### mathutils.flx
 
 ```fluxus
-numbers[1] <- 10;
+fun add(int a, int b) {
+    return a + b;
+}
 ```
 
-Arrays are dynamic in size.
+### main.flx
+
+```fluxus
+Use mathutils.flx;
+
+int result <- add(5, 3);
+println(result);
+```
+
+## Rules
+
+- File must end with `.flx`
+- `Use` is case-sensitive
+- Files load in order
+- Multiple `Use` allowed
+- Circular imports not recommended
+
+## Built-in Modules vs Files
+
+```fluxus
+Use fluxus.start;
+Use myfile.flx;
+```
 
 ---
 
-# 12. Pointers
+# 12. Arrays
 
-Pointers store references to variables.
+```fluxus
+int numbers <- [1, 2, 3];
 
-## 12.1 Getting Address
+println(numbers[0]);
+numbers[1] <- 10;
+```
+
+Arrays are dynamic.
+
+---
+
+# 13. Pointers
 
 ```fluxus
 int x <- 5;
 int* p <- &x;
-```
 
-## 12.2 Dereferencing
-
-```fluxus
 *p <- 20;
 ```
 
@@ -377,11 +333,7 @@ Now `x` equals `20`.
 
 ---
 
-# 13. Structs
-
-Structs store named fields.
-
-## 13.1 Creating
+# 14. Structs
 
 ```fluxus
 struct Person {
@@ -390,40 +342,25 @@ struct Person {
 }
 ```
 
-## 13.2 Access
+Access:
 
 ```fluxus
 println(person.name);
 ```
 
-Fields can contain any value type.
+---
+
+# 15. Built-in Functions
+
+- `println(value)`
+- `toStr(value)`
+- `toInt(value)`
+- `len(value)`
+- `randInt(a, b)`
 
 ---
 
-# 14. Built-in Functions
-
-## 14.1 Output
-
-### println(value)
-Prints value with newline.
-
-### toStr(value)
-Converts value to String.
-
-### toInt(value)
-Converts value to integer.
-
-### len(value)
-Returns length of String or Array.
-
-### randInt(a, b)
-Returns random integer between a and b.
-
----
-
-# 15. Modules
-
-Modules enable additional features.
+# 16. Modules
 
 Activate with:
 
@@ -431,11 +368,7 @@ Activate with:
 Use module.name;
 ```
 
----
-
-## 15.1 fluxus.start
-
-Console control functions:
+## fluxus.start
 
 ```
 clear()
@@ -447,15 +380,13 @@ hideCursor()
 showCursor()
 ```
 
----
-
-## 15.2 fluxus.colrs
+## fluxus.colrs
 
 ```
 setColor("colorName")
 ```
 
-Available colors:
+Colors:
 
 black  
 red  
@@ -470,9 +401,7 @@ bright_green
 bright_blue  
 reset  
 
----
-
-## 15.3 fluxus.math
+## fluxus.math
 
 ```
 sin(x)
@@ -486,9 +415,7 @@ min(a,b)
 max(a,b)
 ```
 
----
-
-## 15.4 fluxus.filesys
+## fluxus.filesys
 
 ```
 readFile(path)
@@ -502,47 +429,44 @@ listDir(path)
 
 ---
 
-# 16. Type Conversion Rules
+# 17. Type Conversion Rules
 
-When assigning values:
-
-- String → int uses numeric parsing
-- int → double allowed
-- double → int truncates decimals
-- Any value → bool uses truth rules
-- Non-string → String uses text conversion
+- String → int uses numeric parsing  
+- int → double allowed  
+- double → int truncates decimals  
+- Any value → bool uses truth rules  
+- Non-string → String uses text conversion  
 
 ---
 
-# 17. Truth Rules
+# 18. Truth Rules
 
 Value is true if:
 
-- int ≠ 0
-- double ≠ 0.0
-- String not empty
-- Array not empty
-- bool is true
+- int ≠ 0  
+- double ≠ 0.0  
+- String not empty  
+- Array not empty  
+- bool is true  
 
 Otherwise false.
 
 ---
 
-# 18. Execution Model
+# 19. Execution Model
 
 Fluxus:
 
-- Executes top to bottom
-- Uses block scope
-- Functions create new scope
-- Variables are dynamically stored
-- Arrays are dynamic
-- Struct fields stored at runtime
-- Pointers reference actual variable bindings
+- Executes top to bottom  
+- Uses block scope  
+- Functions create new scope  
+- Arrays are dynamic  
+- Struct fields stored at runtime  
+- Pointers reference actual variable bindings  
 
 ---
 
-# 19. Complete Example
+# 20. Complete Example
 
 ```fluxus
 Use fluxus.start;
@@ -561,7 +485,7 @@ setColor("reset");
 
 ---
 
-# 20. Feature Summary
+# 21. Feature Summary
 
 Fluxus v2 supports:
 
@@ -569,6 +493,7 @@ Fluxus v2 supports:
 - Functions
 - While loops
 - Conditions
+- Multi-file system
 - Arrays
 - Pointers
 - Structs
