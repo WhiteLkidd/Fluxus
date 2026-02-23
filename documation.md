@@ -4,7 +4,7 @@
 Fluxus is a lightweight interpreted programming language designed to be simple, readable, and powerful enough for console applications.  
 It combines ideas from C, C++, Java, Python and Lua, while maintaining its own unique syntax (such as `<-` assignment).
 
-Use SimonPad to code comfortably like in VS Code or other editors.
+Use FluxIDE or FluxIDE Java edition (coming soon!) to code comfortably like in VS Code or other editors.
 
 This document explains everything available in Fluxus v2 in a clear and beginner-friendly way.
 
