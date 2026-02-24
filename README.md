@@ -1,9 +1,11 @@
 # 📝 FluxIDE – Ultimate Text Editor
 
 **Author:** 12 years old kid 💻  
-**Description:** SimonPad is an ultra-cool text editor with **syntax highlighting** for Python, C, and C++. You can change fonts, colors, and even set a background image. 
+**Description:** FluxIDE is an ultra-cool code editor with **syntax highlighting** for Python, C, and C++. You can change fonts, colors, and even set a background image. 
 **Downlaod FluxIDE with this link Google drive: https://drive.google.com/file/d/1YrM1C9GcSA-w9_rbZWFQhSOrTKyJgz_c/view?usp=sharing**
 Now it’s a **standalone exe** – no Python needed, just double-click and code!
+Download FluxIDE Java edition with this link Gooogle drive: https://drive.google.com/file/d/1poSTmos4KajVDf3VpJALyProHQH9k9Id/view?usp=drive_link
+
 
 ---
 
