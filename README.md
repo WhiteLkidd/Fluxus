@@ -29,5 +29,4 @@ Everything works out-of-the-box, no extra installs required.
 ## ✨ Note
 Created by a **12-year-old kid**, but works like a professional text editor 😎  
 Perfect for quick coding, learning, or just showing off your ultra-cool Python GUI!
-Soon i will drop a new version of FluxIDE made in Java but more like Thonny IDE but with all function that FluxIDE has       name: FluxIDE Java editon
 
