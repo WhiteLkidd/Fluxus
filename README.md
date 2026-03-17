@@ -46,7 +46,16 @@ To run a program:
 ./fluxus program.flx
 ```
 
-Programs are executed from top to bottom.
+Fluxus does not require a main function.
+Code executes from top to bottom.
+
+However, for larger programs, using main() is recommended for better structure.
+```
+fun main() {
+    println("Hello, world!");
+}
+main();
+```
 
 ---
 
